@@ -1,0 +1,19 @@
+.item-cont {
+  width: 400px;
+  height: 200px;
+}
+
+.thumb-video {
+  height: 200px;
+  object-fit: contain;
+}
+
+.thumb-img {
+  height: 200px;
+  width: 400px;
+  object-fit: contain;
+}
+
+.thumbnail {
+  height: 250px;
+}
