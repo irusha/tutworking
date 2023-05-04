@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-video-thumb',
@@ -11,9 +11,15 @@ export class VideoThumbComponent implements AfterViewInit {
   @ViewChild('thumbImg') thumbImg: ElementRef | undefined;
   @ViewChild('thumbnail') thumbnail: ElementRef | undefined;
   @Input() videoThumbObj: any;
+  @Input() prevVideoElements: any;
+  @Output() itemEvent = new EventEmitter<any>;
 
   lastVideoPrev: any;
   lastVideoThumb: any;
+
+  setPreviousItem(values: any) {
+    this.itemEvent.emit(values);
+  }
 
   ngAfterViewInit(): void {
     let thumbElement = this.thumbnail?.nativeElement
@@ -23,18 +29,14 @@ export class VideoThumbComponent implements AfterViewInit {
     thumbElement.onmouseleave = () => this.pauseVideo(thumbVideo, thumbImage)
     thumbElement.addEventListener("touchstart", () =>
       this.playCertainVideo(thumbVideo, thumbImage))
-    // thumbElement.addEventListener("touchcancel", () => this.pauseVideo(thumbVideo, thumbImage))
   }
 
   playCertainVideo(newVideoPrev: any, newVideoThumb: any) {
-    if (this.lastVideoPrev != null && this.lastVideoThumb != null) {
-      this.pauseVideo(this.lastVideoPrev, this.lastVideoThumb)
+    if (this.prevVideoElements != null) {
+      this.pauseVideo(this.prevVideoElements[0], this.prevVideoElements[1])
     }
-    console.log(this.lastVideoThumb)
+    this.setPreviousItem([newVideoPrev, newVideoThumb])
     this.playVideo(newVideoPrev, newVideoThumb)
-
-    this.lastVideoPrev = newVideoPrev
-    this.lastVideoThumb = newVideoThumb
   }
 
   playVideo(thumbVideo: any, thumbImage: any) {

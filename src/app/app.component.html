@@ -7,5 +7,5 @@
   </div>
 </nav>
 <div>
-  <app-video-thumb *ngFor="let videoObj of apiData.data" [videoThumbObj]="videoObj"></app-video-thumb>
+  <app-video-thumb *ngFor="let videoObj of apiData.data" [videoThumbObj]="videoObj" (itemEvent)="getChildStuff($event)" [prevVideoElements]="previousThumbnail"></app-video-thumb>
 </div>

@@ -13,8 +13,13 @@ export class AppComponent implements OnInit {
   apiData: any;
   tempVideo: any;
   address: string | undefined;
+  previousThumbnail: string | undefined;
 
   constructor(private apiService: DataGrabberService, private modalService: NgbModal) {
+  }
+
+  getChildStuff(stuff: any){
+    this.previousThumbnail = stuff
   }
 
   public open(modal: any): void {
