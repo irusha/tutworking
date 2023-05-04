@@ -1,0 +1,8 @@
+.button-1:hover {
+  background-color: rgba(70, 63, 63, 0.66);
+}
+
+.button-1 {
+  background-color: transparent;
+  padding: 1px;
+}

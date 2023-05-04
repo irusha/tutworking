@@ -1,3 +1,11 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="flex-row d-flex mx-2">
+    <button type="button" class="shadow-none h4 border-0 hover-overlay rounded-3 button-1"><span
+      class="material-symbols-outlined mt-2 mx-2 bg-transparent text-white">menu</span></button>
+    <a href="{{address + ':4200'}}" class="text-decoration-none text-white mx-4 my-1"><h2 class="mb-0">HomeHub</h2></a>
+
+  </div>
+</nav>
 <div>
   <app-video-thumb *ngFor="let videoObj of apiData.data" [videoThumbObj]="videoObj"></app-video-thumb>
 </div>
