@@ -6,7 +6,7 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outpu
   styleUrls: ['./video-thumb.component.css']
 })
 
-export class VideoThumbComponent implements AfterViewInit {
+export class VideoThumbComponent implements AfterViewInit, OnInit {
   @ViewChild('thumbPrev') thumbPrev: ElementRef | undefined;
   @ViewChild('thumbImg') thumbImg: ElementRef | undefined;
   @ViewChild('thumbnail') thumbnail: ElementRef | undefined;
@@ -22,14 +22,17 @@ export class VideoThumbComponent implements AfterViewInit {
     this.itemEvent.emit(values);
   }
 
-  ngAfterViewInit(): void {
+  ngOnInit():void {
     this.secondsToFormatted()
+  }
+
+  ngAfterViewInit(): void {
     let thumbElement = this.thumbnail?.nativeElement
     let thumbVideo = this.thumbPrev?.nativeElement
     let thumbImage = this.thumbImg?.nativeElement
     let progressElement = this.progressBarCont?.nativeElement
     thumbElement.onmouseover = () => this.playVideo(thumbVideo, thumbImage, progressElement)
-    thumbElement.onmouseleave = () => this.pauseVideo(thumbVideo, thumbImage, progressElement)
+    thumbElement.onmouseleave = () => this.pauseVideo(thumbVideo, thumbImage)
     thumbElement.addEventListener("touchstart", () =>
       this.playCertainVideo(thumbVideo, thumbImage, progressElement))
   }
@@ -37,7 +40,7 @@ export class VideoThumbComponent implements AfterViewInit {
   playCertainVideo(newVideoPrev: any, newVideoThumb: any, progressBarElement: any) {
     if (this.prevVideoElements != null) {
       if (this.prevVideoElements[0] != newVideoPrev) {
-        this.pauseVideo(this.prevVideoElements[0], this.prevVideoElements[1], progressBarElement)
+        this.pauseVideo(this.prevVideoElements[0], this.prevVideoElements[1])
       }
     }
     this.setPreviousItem([newVideoPrev, newVideoThumb])
@@ -56,10 +59,9 @@ export class VideoThumbComponent implements AfterViewInit {
       thumbVideo.style.display = 'block'
       thumbVideo.play()
     }, 1000)
-
   }
 
-  pauseVideo(thumbVideo: any, thumbImage: any, progressBarElement: any) {
+  pauseVideo(thumbVideo: any, thumbImage: any) {
     thumbImage.style.display = 'block'
     thumbVideo.style.display = 'none'
     thumbVideo.pause()
@@ -76,13 +78,11 @@ export class VideoThumbComponent implements AfterViewInit {
         + (intSec % 60) : (intSec % 60)
       }`
     } else {
-      this.time = `${(intSec / 3600) < 10 ? '0'
-        + parseInt(String(intSec / 60)) : parseInt(String(intSec / 3600))
+      this.time = `${parseInt(String(intSec / 3600))
       }:${
         ((intSec % 3600) / 60) < 10 ? '0' + parseInt(String((intSec % 3600) / 60)) :
           parseInt(String((intSec % 3600) / 60))
-      }:
-      ${
+      }:${
         ((intSec % 3600) % 60) < 10 ? '0' + parseInt(String((intSec % 3600) % 60)) :
           parseInt(String((intSec % 3600) % 60))
       }`

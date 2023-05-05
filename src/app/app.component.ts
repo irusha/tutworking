@@ -10,10 +10,10 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 export class AppComponent implements OnInit {
   title = 'HomeHub';
+  apiDataObj: any;
   apiData: any;
-  tempVideo: any;
-  address: string | undefined;
   previousThumbnail: string | undefined;
+  address: string | undefined;
 
   constructor(private apiService: DataGrabberService) {
   }
@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.address = "http://" + window.location.host.split(':')[0]
     this.apiService.getData(this.address + ":5000/recom/").subscribe(res => {
-      this.apiData = res
-      this.tempVideo = this.apiData.data[2]
+      this.apiDataObj = res
+      this.apiData = this.apiDataObj.data
     })
   }
 }
