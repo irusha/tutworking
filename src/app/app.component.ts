@@ -30,5 +30,3 @@ export class AppComponent implements OnInit {
     })
   }
 }
-var lastVideoPrev: any;
-var lastVideoThumb: any;

@@ -18,3 +18,28 @@
   flex-shrink: 1;
 }
 
+.item-cont{
+  position: relative;
+}
+
+.bar-cont {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.item-cont .bar {
+  position: relative;
+  z-index: 5;
+}
+
+.progress-animation {
+  animation-name: progress;
+  animation-duration: 1s;
+}
+
+@keyframes progress {
+  from {width: 0}
+  to {width: 100%}
+}
