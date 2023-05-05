@@ -15,15 +15,11 @@ export class AppComponent implements OnInit {
   address: string | undefined;
   previousThumbnail: string | undefined;
 
-  constructor(private apiService: DataGrabberService, private modalService: NgbModal) {
+  constructor(private apiService: DataGrabberService) {
   }
 
   getChildStuff(stuff: any){
     this.previousThumbnail = stuff
-  }
-
-  public open(modal: any): void {
-    this.modalService.open(modal);
   }
 
   ngOnInit(): void {

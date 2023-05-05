@@ -1,9 +1,17 @@
 <div #thumbnail class="thumbnail">
+  <div class="thumb-media">
     <div class="item-cont">
+      <div class="progress" style="height: 5px">
+        <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+      </div>
       <img #thumbImg src="{{'http://' + videoThumbObj.thumbnail}}" alt="" id="video-thumb" class="thumb-img">
-      <video #thumbPrev class="thumb-video" loop src="{{'http://' + videoThumbObj.preview}}" id="video-prev" muted="muted" style="display: none"></video>
+      <video preload="metadata" #thumbPrev class="thumb-video" loop src="{{'http://' + videoThumbObj.preview}}" id="video-prev" muted="muted" style="display: none"></video>
     </div>
-    <div>
-      <h3></h3>
-    </div>
+  </div>
+  <div class="vid-desc w-100 p-3 text-white">
+    <h3 class="w-100 mb-1">{{videoThumbObj.title}}</h3>
+    <p style="color: darkgray">{{videoThumbObj.views}} Views</p>
+    <p style="color: darkgray">{{time}}</p>
+  </div>
 </div>
+

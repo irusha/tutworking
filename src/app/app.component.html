@@ -6,6 +6,6 @@
 
   </div>
 </nav>
-<div>
-  <app-video-thumb *ngFor="let videoObj of apiData.data" [videoThumbObj]="videoObj" (itemEvent)="getChildStuff($event)" [prevVideoElements]="previousThumbnail"></app-video-thumb>
+<div class="d-flex flex-wrap flex-column" style="max-width: 100vw">
+  <app-video-thumb class="justify-content-center" style="display: block; flex-shrink: 1;"  *ngFor="let videoObj of apiData.data" [videoThumbObj]="videoObj" (itemEvent)="getChildStuff($event)" [prevVideoElements]="previousThumbnail"></app-video-thumb>
 </div>
