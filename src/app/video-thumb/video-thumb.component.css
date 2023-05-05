@@ -13,12 +13,6 @@
 }
 
 .thumb-media {
-  width: 100vw;
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-
-.item-cont{
   position: relative;
 }
 
@@ -37,6 +31,21 @@
 .progress-animation {
   animation-name: progress;
   animation-duration: 1s;
+}
+
+.time {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.71);
+  right: 0;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.time p {
+  margin-bottom: 0;
 }
 
 @keyframes progress {

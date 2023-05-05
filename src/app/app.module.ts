@@ -16,7 +16,8 @@ import { VideoListComponent } from './video-list/video-list.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
