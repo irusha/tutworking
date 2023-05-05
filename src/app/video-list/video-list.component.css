@@ -1,0 +1,26 @@
+.video-items-holder {
+  flex-direction: column;
+
+}
+@media (min-width: 500px) {
+  .video-items {
+    width: 40vw;
+  }
+
+  .video-items-holder {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width:800px) {
+  .video-items {
+    width: 30vw;
+  }
+}
+
+@media (min-width: 1100px) {
+  .video-items {
+    width: 24vw;
+  }
+}

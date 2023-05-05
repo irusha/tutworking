@@ -31,13 +31,15 @@ export class VideoThumbComponent implements AfterViewInit, OnInit {
     let thumbVideo = this.thumbPrev?.nativeElement
     let thumbImage = this.thumbImg?.nativeElement
     let progressElement = this.progressBarCont?.nativeElement
-    thumbElement.onmouseover = () => this.playVideo(thumbVideo, thumbImage, progressElement)
+    thumbElement.onmouseover = () => this.playCertainVideo(thumbVideo, thumbImage, progressElement)
     thumbElement.onmouseleave = () => this.pauseVideo(thumbVideo, thumbImage)
     thumbElement.addEventListener("touchstart", () =>
       this.playCertainVideo(thumbVideo, thumbImage, progressElement))
   }
 
+
   playCertainVideo(newVideoPrev: any, newVideoThumb: any, progressBarElement: any) {
+    console.log("played")
     if (this.prevVideoElements != null) {
       if (this.prevVideoElements[0] != newVideoPrev) {
         this.pauseVideo(this.prevVideoElements[0], this.prevVideoElements[1])
@@ -62,9 +64,9 @@ export class VideoThumbComponent implements AfterViewInit, OnInit {
   }
 
   pauseVideo(thumbVideo: any, thumbImage: any) {
+    thumbVideo.pause()
     thumbImage.style.display = 'block'
     thumbVideo.style.display = 'none'
-    thumbVideo.pause()
   }
 
   secondsToFormatted() {
