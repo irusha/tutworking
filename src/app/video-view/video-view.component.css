@@ -1,0 +1,26 @@
+.video {
+  width: 100%;
+}
+
+.video-display {
+  flex-direction: column;
+}
+
+.desc-section {
+  width: 100%;
+}
+
+.label-container {
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #484f4f;
+  padding: 15px;
+}
+
+.label {
+  width: max-content;
+}
+
+.labels {
+  flex-wrap: wrap;
+}

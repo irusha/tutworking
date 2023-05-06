@@ -11,12 +11,11 @@ export class VideoThumbComponent implements AfterViewInit, OnInit {
   @ViewChild('thumbImg') thumbImg: ElementRef | undefined;
   @ViewChild('thumbnail') thumbnail: ElementRef | undefined;
   @ViewChild('progressBarCont') progressBarCont: ElementRef | undefined;
-  @ViewChild('progressBar') progressBar: ElementRef | undefined;
   @Input() videoThumbObj: any;
   @Input() prevVideoElements: any;
   @Output() itemEvent = new EventEmitter<any>;
   time: string | undefined;
-  isBarAppeared = false
+  address: string | undefined;
 
   setPreviousItem(values: any) {
     this.itemEvent.emit(values);
@@ -24,43 +23,35 @@ export class VideoThumbComponent implements AfterViewInit, OnInit {
 
   ngOnInit():void {
     this.secondsToFormatted()
+    this.address = "http://" + window.location.host
   }
 
   ngAfterViewInit(): void {
     let thumbElement = this.thumbnail?.nativeElement
     let thumbVideo = this.thumbPrev?.nativeElement
     let thumbImage = this.thumbImg?.nativeElement
-    let progressElement = this.progressBarCont?.nativeElement
-    thumbElement.onmouseover = () => this.playCertainVideo(thumbVideo, thumbImage, progressElement)
+    thumbElement.onmouseover = () => this.playVideo(thumbVideo, thumbImage)
     thumbElement.onmouseleave = () => this.pauseVideo(thumbVideo, thumbImage)
     thumbElement.addEventListener("touchstart", () =>
-      this.playCertainVideo(thumbVideo, thumbImage, progressElement))
+      this.playCertainVideo(thumbVideo, thumbImage))
   }
 
 
-  playCertainVideo(newVideoPrev: any, newVideoThumb: any, progressBarElement: any) {
-    console.log("played")
+  playCertainVideo(newVideoPrev: any, newVideoThumb: any) {
     if (this.prevVideoElements != null) {
       if (this.prevVideoElements[0] != newVideoPrev) {
         this.pauseVideo(this.prevVideoElements[0], this.prevVideoElements[1])
       }
     }
     this.setPreviousItem([newVideoPrev, newVideoThumb])
-    this.playVideo(newVideoPrev, newVideoThumb, progressBarElement)
+    this.playVideo(newVideoPrev, newVideoThumb)
   }
 
-  playVideo(thumbVideo: any, thumbImage: any, progressBarElement: any) {
-    if (!this.isBarAppeared || this.prevVideoElements[0] != thumbVideo) {
-      this.isBarAppeared = true
-      progressBarElement.style.display = 'block'
-    }
+  playVideo(thumbVideo: any, thumbImage: any) {
 
-    setTimeout(() => {
-      thumbImage.style.display = 'none'
-      progressBarElement.style.display = 'none'
-      thumbVideo.style.display = 'block'
-      thumbVideo.play()
-    }, 1000)
+    thumbImage.style.display = 'none'
+    thumbVideo.style.display = 'block'
+    thumbVideo.play()
   }
 
   pauseVideo(thumbVideo: any, thumbImage: any) {

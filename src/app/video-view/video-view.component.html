@@ -1,1 +1,23 @@
-<p>video-view works!</p>
+<div class="video-display d-flex">
+  <div class="vid-section">
+    <video src="{{'http://' + apiDataObj.url}}" controls class="video"></video>
+  </div>
+  <div class="desc-section p-3 text-light">
+    <h1 class="text-break">{{titleFormatter(apiDataObj.title)}}</h1>
+    <p class="">Date added: {{apiDataObj.date}}</p>
+    <p>Views: {{apiDataObj.views}}</p>
+    <div class="label-container">
+      <h3 class="mx-2">Labels</h3>
+      <div class="labels d-flex mb-4">
+        <div *ngFor="let label of apiDataObj.labels" class="btn btn-light d-flex m-2 label position-relative">
+          <div>{{label}}</div>
+          <div class="material-symbols-outlined" style="margin-left: 20px">close</div>
+        </div>
+      </div>
+      <div class="justify-content-between d-flex mb-1">
+        <button type="button" class="btn btn-primary mx-2">Edit</button>
+        <button type="button" class="btn btn-secondary mx-2">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
