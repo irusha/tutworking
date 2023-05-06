@@ -9,6 +9,7 @@ import { VideoListComponent } from './video-list/video-list.component';
 import {AppRoutingModule} from "./routing/app-routing.module";
 import { VideoViewComponent } from './video-view/video-view.component';
 import { HomeComponent } from './home/home.component';
+import { LabelsEditorComponent } from './labels-editor/labels-editor.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     VideoThumbComponent,
     VideoListComponent,
     VideoViewComponent,
-    HomeComponent
+    HomeComponent,
+    LabelsEditorComponent
   ],
   imports: [
     BrowserModule,

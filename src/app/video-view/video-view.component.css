@@ -21,10 +21,6 @@
   width: 100%;
 }
 
-.labels {
-  flex-wrap: wrap;
-}
-
 @media (min-width: 950px){
   .video-display {
     flex-direction: row;

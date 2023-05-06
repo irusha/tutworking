@@ -1,0 +1,21 @@
+<div class="labels-modal">
+  <div class="options-container">
+    <h2>Add new label</h2>
+  </div>
+</div>
+<div class="label-container">
+  <h3 class="mx-2">Labels</h3>
+  <div class="labels d-flex mb-4">
+    <div *ngFor="let label of labels" class="btn btn-light d-flex m-2 label position-relative">
+      <div>{{label}}</div>
+      <div #labelClose class="material-symbols-outlined" (click)="removeLabels(label)" style="margin-left: 20px; visibility: hidden">close</div>
+    </div>
+    <button #newBtn class="btn btn-light m-2 label position-relative" style="display: none">
+      <div>+ Add New</div>
+    </button>
+  </div>
+  <div class="justify-content-between d-flex mb-1">
+    <button #labelChanges (click)="allowEditing()" type="button" class="btn btn-primary mx-2">Edit</button>
+    <button #cancel type="button" (click)="cancelFunction()" class="btn btn-secondary mx-2" style="visibility: hidden">Cancel</button>
+  </div>
+</div>

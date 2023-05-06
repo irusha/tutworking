@@ -50,6 +50,6 @@ export class VideoViewComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.titleService.setTitle(this.apiDataObj.title + ' - HomeHub')
+    this.titleService.setTitle(this.titleFormatter(this.apiDataObj.title) + ' - HomeHub')
   }
 }
