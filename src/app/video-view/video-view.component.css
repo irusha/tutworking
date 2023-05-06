@@ -1,7 +1,3 @@
-.video {
-  width: 100%;
-}
-
 .video-display {
   flex-direction: column;
 }
@@ -21,6 +17,27 @@
   width: max-content;
 }
 
+.video {
+  width: 100%;
+}
+
 .labels {
   flex-wrap: wrap;
+}
+
+@media (min-width: 950px){
+  .video-display {
+    flex-direction: row;
+    margin-left: 1rem;
+  }
+
+  .video {
+    width: 65vw;
+  }
+}
+
+@media (min-width: 1250px) {
+  .video {
+    width: 71vw;
+  }
 }

@@ -12,6 +12,8 @@ export class VideoViewComponent implements OnInit, AfterViewInit {
   videoId: string | undefined;
   address: string | undefined;
   apiDataObj: any;
+  private recomObj: any;
+  apiData: any;
 
   ngOnInit() {
     this.route.queryParams
@@ -28,6 +30,11 @@ export class VideoViewComponent implements OnInit, AfterViewInit {
       this.address = "http://" + window.location.host.split(':')[0]
       this.apiService.getData(this.address + ":5000/library/?video-id=" + this.videoId).subscribe(res => {
         this.apiDataObj = res
+      })
+
+      this.apiService.getData(this.address + ":5000/recom/").subscribe(res => {
+        this.recomObj = res
+        this.apiData = this.recomObj.data
       })
     }
 
