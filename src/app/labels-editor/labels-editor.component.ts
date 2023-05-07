@@ -11,6 +11,7 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
   isEditingMode: boolean = false;
   @Input() labels: any;
   @Input() videoId: any;
+  prevLabels: string[] = [];
   @ViewChild('labelChanges') labelChanges: ElementRef | undefined;
   @ViewChild('labelInput') labelInput: ElementRef | undefined;
   @ViewChild('newBtnText') newBtnText: ElementRef | undefined;
@@ -27,6 +28,9 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+  }
+
   close() {
     this.isNewLabelAlreadyClicked = false
     let modal = this.modal?.nativeElement
@@ -41,9 +45,6 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
     })
   }
 
-  ngAfterViewInit() {
-  }
-
   removeLabels(currentLabel: any) {
     let arrayIndex = this.labels.indexOf(currentLabel)
     if (arrayIndex > -1) {
@@ -51,9 +52,7 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private apiService: DataGrabberService) {
-
-  }
+  constructor(private apiService: DataGrabberService) {  }
 
   cancelEditing() {
     let labelInput = this.labelInput?.nativeElement
@@ -110,6 +109,9 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
     let labelChangeBtn = this.labelChanges?.nativeElement
     let newBtn = this.newBtn?.nativeElement
     let cancelBtn = this.cancel?.nativeElement
+
+    this.prevLabels = [...this.labels]
+
     if (!this.isEditingMode) {
       this.isEditingMode = true
       labelChangeBtn.innerText = 'Save'
@@ -122,15 +124,30 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
         item.style.visibility = 'visible'
       })
     } else {
+      this.prevLabels = [...this.labels]
+
       this.saveLabels()
       this.cancelFunction()
     }
+  }
+
+  saveLabels() {
+    let str: string = ''
+    this.labels.forEach((label: string) => {
+      str += '&labels=' + encodeURIComponent(label)
+    })
+
+    let url = serverAddress + "/labels/?video-id=" + this.videoId + str
+    this.apiService.getData(url).subscribe()
+    console.log(url)
   }
 
   cancelFunction() {
     let labelChangeBtn = this.labelChanges?.nativeElement
     let newBtn = this.newBtn?.nativeElement
     let cancelBtn = this.cancel?.nativeElement
+
+    this.labels = [...this.prevLabels]
 
     labelChangeBtn.classList.add('btn-primary')
     cancelBtn.style.visibility = 'hidden'
@@ -158,16 +175,4 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
     })
   }
 
-  saveLabels() {
-    let objData: any;
-    let str: string = ''
-
-    this.labels.forEach((label: string) => {
-      str += '&labels=' + encodeURIComponent(label)
-    })
-
-    let url = serverAddress + "/labels/?video-id=" + this.videoId + str
-    this.apiService.getData(url).subscribe()
-    console.log(url)
-  }
 }
