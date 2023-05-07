@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {DataGrabberService} from "../data-grabber.service";
 import {Title} from "@angular/platform-browser";
 import {serverAddress} from "../../environments/environment";
@@ -45,8 +45,7 @@ export class VideoViewComponent implements OnInit, AfterViewInit {
   }
 
   titleFormatter(title: string) {
-    const splitTitle = title.split('.')[0]
-    return splitTitle
+    return title.split('.')[0]
   }
 
   ngAfterViewInit(): void {

@@ -91,6 +91,11 @@
     max-height: 9vw;
     width: 100%;
   }
+
+  .thumbnail {
+    padding: 15px;
+
+  }
 }
 
 @media (min-width:800px) {

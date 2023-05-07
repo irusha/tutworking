@@ -1,1 +1,9 @@
-<app-video-list [apiData]="apiData"></app-video-list>
+<div #recommendationTitle>
+  <h1 class="text-light m-3">Recommended for you</h1>
+</div>
+<app-video-list [apiData]="recommendationData"></app-video-list>
+
+<div>
+  <h1 class="text-light m-3">Your videos</h1>
+</div>
+<app-video-list [apiData]="secondDataSet"></app-video-list>
