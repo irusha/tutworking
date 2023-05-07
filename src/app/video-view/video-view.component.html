@@ -6,7 +6,7 @@
     <h1 class="text-break">{{titleFormatter(apiDataObj.title)}}</h1>
     <p class="">Date added: {{apiDataObj.date}}</p>
     <p>Views: {{apiDataObj.views}}</p>
-    <app-labels-editor [labels]="apiDataObj.labels"></app-labels-editor>
+    <app-labels-editor [labels]="apiDataObj.labels" [videoId]="videoId"></app-labels-editor>
   </div>
 </div>
 <h1 class="text-light m-3">Recommended for you</h1>

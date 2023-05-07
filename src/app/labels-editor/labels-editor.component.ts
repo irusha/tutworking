@@ -10,6 +10,7 @@ import {serverAddress} from "../../environments/environment";
 export class LabelsEditorComponent implements OnInit, AfterViewInit {
   isEditingMode: boolean = false;
   @Input() labels: any;
+  @Input() videoId: any;
   @ViewChild('labelChanges') labelChanges: ElementRef | undefined;
   @ViewChild('labelInput') labelInput: ElementRef | undefined;
   @ViewChild('newBtnText') newBtnText: ElementRef | undefined;
@@ -151,7 +152,7 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
 
   loadLabels() {
     let objData: any;
-    this.apiService.getData(serverAddress + "/label/").subscribe(res => {
+    this.apiService.getData(serverAddress + "/labels/").subscribe(res => {
       objData = res
       this.labelObj = objData.labels
     })
@@ -159,6 +160,14 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
 
   saveLabels() {
     let objData: any;
+    let str: string = ''
 
+    this.labels.forEach((label: string) => {
+      str += '&labels=' + encodeURIComponent(label)
+    })
+
+    let url = serverAddress + "/labels/?video-id=" + this.videoId + str
+    this.apiService.getData(url).subscribe()
+    console.log(url)
   }
 }
