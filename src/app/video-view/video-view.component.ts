@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {DataGrabberService} from "../data-grabber.service";
 import {Title} from "@angular/platform-browser";
+import {serverAddress} from "../../environments/environment";
 
 @Component({
   selector: 'app-video-view',
@@ -10,7 +11,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class VideoViewComponent implements OnInit, AfterViewInit {
   videoId: string | undefined;
-  address: string | undefined;
+  labels: any;
   apiDataObj: any;
   private recomObj: any;
   apiData: any;
@@ -27,12 +28,11 @@ export class VideoViewComponent implements OnInit, AfterViewInit {
       window.location.href = "/";
     }
     else {
-      this.address = "http://" + window.location.host.split(':')[0]
-      this.apiService.getData(this.address + ":5000/library/?video-id=" + this.videoId).subscribe(res => {
+      this.apiService.getData(serverAddress + "/library/?video-id=" + this.videoId).subscribe(res => {
         this.apiDataObj = res
       })
 
-      this.apiService.getData(this.address + ":5000/recom/").subscribe(res => {
+      this.apiService.getData(serverAddress + "/recom/").subscribe(res => {
         this.recomObj = res
         this.apiData = this.recomObj.data
       })

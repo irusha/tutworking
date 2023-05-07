@@ -1,6 +1,28 @@
-<div class="labels-modal">
-  <div class="options-container">
-    <h2>Add new label</h2>
+<div #modal class="labels-modal" style="display: none">
+  <div class="options-container bg-light text-dark mb-2">
+    <div class="mx-2 d-flex justify-content-between">
+      <h2>Add a new label</h2>
+      <div (click)="close()" class="material-symbols-outlined" style="cursor: pointer">close</div>
+    </div>
+
+    <div class="list-group">
+      <button (click)="addLabelToArray(currentLabel)" *ngFor="let currentLabel of labelObj" class="list-group-item list-group-item-action">{{currentLabel}}</button>
+      <button #newLabelButton (click)="newLabelSwitch()" class="list-group-item list-group-item-action">
+        <span #newBtnText>+ Add new</span>
+        <div #labelInput class="justify-content-between" style="display: none">
+          <input #inputText style="margin-right: 5px" class="form-control form-control-sm" type="text" placeholder="New Label">
+          <div class="d-flex">
+            <button (click)="doneEditing()" style="width: 10px; height: 25px; margin-top: 3px" class="btn btn-primary material-symbols-outlined position-relative mx-1">
+              <i style="top: 50%; left: 50%; transform: translate(-50%, -50%);" class="m-auto position-absolute bi bi-check"></i>
+            </button>
+            <button (click)="cancelEditing()" style="width: 10px; height: 25px; margin-top: 3px" class="btn btn-primary mx-1 material-symbols-outlined position-relative">
+              <i style="top: 50%; left: 50%; transform: translate(-50%, -50%);" class="m-auto bi bi-x position-absolute">
+              </i>
+            </button>
+          </div>
+        </div>
+      </button>
+    </div>
   </div>
 </div>
 <div class="label-container">
@@ -10,7 +32,7 @@
       <div>{{label}}</div>
       <div #labelClose class="material-symbols-outlined" (click)="removeLabels(label)" style="margin-left: 20px; visibility: hidden">close</div>
     </div>
-    <button #newBtn class="btn btn-light m-2 label position-relative" style="display: none">
+    <button (click)="newLabel()" #newBtn class="btn btn-light m-2 label position-relative" style="display: none">
       <div>+ Add New</div>
     </button>
   </div>

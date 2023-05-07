@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {DataGrabberService} from "./data-grabber.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {angularAddress, serverAddress} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: DataGrabberService) {  }
 
   ngOnInit(): void {
-    this.address = "http://" + window.location.host.split(':')[0]
+    this.address = angularAddress
   }
 
 }
