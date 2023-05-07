@@ -10,6 +10,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   apiDataObj: any;
+  urlFormat = serverAddress + '/library?page='
+  maxPages: number | undefined;
   recommendationData: any;
   pageNumber: string = '1';
   secondDataSet: any;
@@ -26,6 +28,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
           }
         }
       );
+
+    let secondDataSetObj: any;
+    this.apiService.getData(serverAddress + "/library/?page=" + this.pageNumber).subscribe(res => {
+      secondDataSetObj = res
+      this.secondDataSet = secondDataSetObj.data
+      this.maxPages = secondDataSetObj.pages
+    })
   }
 
   ngAfterViewInit(): void {
@@ -42,10 +51,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
       recommTitle.style.display = 'none'
     }
 
-    let secondDataSetObj: any;
-    this.apiService.getData(serverAddress + "/library/?page=" + this.pageNumber).subscribe(res => {
-      secondDataSetObj = res
-      this.secondDataSet = secondDataSetObj.data
-    })
   }
 }
