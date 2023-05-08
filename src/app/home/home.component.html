@@ -7,4 +7,15 @@
   <h1 class="text-light m-3">Your videos</h1>
 </div>
 <app-video-list [apiData]="secondDataSet"></app-video-list>
-<app-paginate [currentPage] = pageNumber [urlFormat]="urlFormat" [dataSet]="secondDataSet"></app-paginate>
+<div class="d-flex flex-column w-100 position-fixed bottom-0">
+  <ul class="pagination pagination-lg mx-auto">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li *ngFor="let page of pages" class="page-item"><a class="page-link" href="{{urlFormat + page}}">{{page}}</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</div>
+

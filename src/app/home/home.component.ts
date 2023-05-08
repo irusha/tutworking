@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataGrabberService} from "../data-grabber.service";
-import {serverAddress} from "../../environments/environment";
+import {angularAddress, serverAddress} from "../../environments/environment";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -10,11 +10,11 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   apiDataObj: any;
-  urlFormat = serverAddress + '/library?page='
-  maxPages: number | undefined;
+  urlFormat = angularAddress + '/?page='
   recommendationData: any;
   pageNumber: string = '1';
   secondDataSet: any;
+  pages: string[] = [];
   @ViewChild('recommendationTitle') recommendationTitle: ElementRef | undefined;
 
   constructor(private route: ActivatedRoute, private apiService: DataGrabberService) {
@@ -33,8 +33,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.apiService.getData(serverAddress + "/library/?page=" + this.pageNumber).subscribe(res => {
       secondDataSetObj = res
       this.secondDataSet = secondDataSetObj.data
-      this.maxPages = secondDataSetObj.pages
+      for (let i = 1; i <= secondDataSetObj.pages; i++) {
+        this.pages?.push(String(i))
+      }
+      console.log(this.pages)
     })
+
+
   }
 
   ngAfterViewInit(): void {
@@ -43,9 +48,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.apiDataObj = res
         this.recommendationData = this.apiDataObj.data
       })
-    }
-
-    else {
+    } else {
       this.recommendationData = []
       let recommTitle = this.recommendationTitle?.nativeElement
       recommTitle.style.display = 'none'
