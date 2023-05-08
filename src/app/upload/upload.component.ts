@@ -1,4 +1,7 @@
-import {Component} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, ViewChild} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {DataGrabberService} from "../data-grabber.service";
+import {serverAddress} from "../../environments/environment";
 
 @Component({
   selector: 'app-upload',
@@ -6,6 +9,22 @@ import {Component} from "@angular/core";
   styleUrls: ['./upload.component.css']
 })
 
-export class UploadComponent {
+export class UploadComponent implements AfterViewInit {
+  @ViewChild('files') files: ElementRef | undefined;
 
+  uploadFunc() {
+    let files = this.files?.nativeElement.files
+    let formData: FormData = new FormData()
+    for (let i = 0; i < files.length; i++) {
+      let currentFile = files[i]
+      formData.append('file', currentFile)
+    }
+    console.log(formData)
+    this.apiService.postData(serverAddress + '/upload/', formData).subscribe(any => console.log(any))
+  }
+  constructor(private apiService: DataGrabberService) {
+  }
+
+  ngAfterViewInit(): void {
+  }
 }
