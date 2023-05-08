@@ -10,4 +10,8 @@ export class DataGrabberService {
   getData(url: string) {
     return this._http.get(url)
   }
+
+  postData(url: string, body: any) {
+    return this._http.post(url, body)
+  }
 }

@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       );
 
     let secondDataSetObj: any;
-    this.apiService.getData(serverAddress + "/library/?max=1&page=" + this.pageNumber).subscribe(res => {
+    this.apiService.getData(serverAddress + "/library/?max=12&page=" + this.pageNumber).subscribe(res => {
       secondDataSetObj = res
       this.secondDataSet = secondDataSetObj.data
       this.maxPages = secondDataSetObj.pages
