@@ -8,13 +8,13 @@
 </div>
 <app-video-list [apiData]="secondDataSet"></app-video-list>
 <div class="d-flex flex-column w-100 position-fixed bottom-0">
-  <ul class="pagination mx-auto bg-black">
+  <ul class="pagination mx-auto">
     <li class="page-item {{pageNumber === 1 ? 'disabled' : ''}}">
-      <a class="page-link" href="{{urlFormat + (pageNumber - 1)}}" tabindex="-1">Previous</a>
+      <a class="page-link bg-black border-dark" href="{{urlFormat + (pageNumber - 1)}}" tabindex="-1">Previous</a>
     </li>
-    <li *ngFor="let page of pages" class="page-item"><a class="page-link {{page == pageNumber ? 'active' : ''}}" href="{{urlFormat + page}}">{{page}}</a></li>
+    <li *ngFor="let page of pages" class="page-item"><a class="page-link {{page == pageNumber ? 'active' : 'bg-black border-dark'}}" href="{{urlFormat + page}}">{{page}}</a></li>
     <li class="page-item {{pageNumber === maxPages ? 'disabled' : ''}}">
-      <a class="page-link" href="{{urlFormat + (pageNumber + 1)}}">Next</a>
+      <a class="page-link bg-black border-dark" href="{{urlFormat + (pageNumber + 1)}}">Next</a>
     </li>
   </ul>
 </div>

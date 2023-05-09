@@ -70,80 +70,37 @@
 
 @media (min-width: 500px) {
   .thumb-video {
-    width: 40vw;
-    height: 25vw;
+    object-fit: cover;
+    max-width: 100%;
+    height: 225px;
+    vertical-align: middle;
+    border-radius: 5px;
   }
 
   .thumb-img {
-    width: 40vw;
-    height: 25vw;
+    object-fit: cover;
+    max-width: 100%;
+    height: 225px;
+    vertical-align: middle;
+    border-radius: 5px;
   }
 
   .bar-cont {
-    width: 40vw;
+    flex-basis: 350px;
+    width: 350px;
+    height: 225px;
   }
 
   .vid-desc {
-    width: 40vw;
+    width: 350px;
+    flex-basis: 350px;
   }
 
   .vid-desc h3 {
-    max-height: 9vw;
-    width: 100%;
+    width: 350px;
+    flex-basis: 350px;
   }
 
   .thumbnail {
-    margin: 25px;
-
-  }
-}
-
-@media (min-width:800px) {
-  .thumb-video {
-    width: 30vw;
-    height: 19vw;
-  }
-
-  .thumb-img {
-    width: 30vw;
-    height: 19vw;
-  }
-
-  .bar-cont {
-    width: 30vw;
-  }
-
-  .vid-desc {
-    width: 30vw;
-  }
-
-  .vid-desc h3 {
-    max-height: 5.625vw;
-    width: 100%;
-  }
-}
-
-@media (min-width:1100px) {
-  .thumb-video {
-    width: 24vw;
-    height: 15vw;
-  }
-
-  .thumb-img {
-    width: 24vw;
-    height: 15vw;
-  }
-
-  .bar-cont {
-    width: 24vw;
-  }
-
-  .vid-desc {
-    width: 24vw;
-  }
-
-  .vid-desc h3 {
-    max-height: 5.625vw;
-    width: 100%;
   }
 }
