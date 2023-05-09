@@ -1,8 +1,70 @@
-<div class="bg-light m-auto upload-container">
-  <h1 class="mx-3">Upload</h1>
+<div #modal class="labels-modal" style="display: none">
+  <div class="options-container bg-light text-dark mb-2">
+    <div class="mx-2 d-flex justify-content-between">
+      <h2>Add a new label</h2>
+      <div (click)="close()" class="material-symbols-outlined" style="cursor: pointer">close</div>
+    </div>
 
-  <label for="formFileLg" class="form-label w-100">Large file input example</label>
-  <input #files class="form-control form-control-lg" id="formFileLg" type="file" multiple/>
-  <input (click)="uploadFunc()" type="button" value="Upload" class="btn btn-primary mt-3">
-  <h1 #uploadedMsg style="display: none;">Done!</h1>
+    <div class="list-group">
+      <button (click)="addLabelToArray(currentLabel)" *ngFor="let currentLabel of labelObj"
+              class="list-group-item list-group-item-action">{{currentLabel}}</button>
+      <button (click)="newLabelSwitch()" class="list-group-item list-group-item-action">
+        <span #newBtnText>+ Add new</span>
+        <div #labelInput class="justify-content-between" style="display: none">
+          <input #inputText style="margin-right: 5px" class="form-control form-control-sm" type="text"
+                 placeholder="New Label">
+          <div class="d-flex">
+            <button (click)="doneEditing()" style="width: 10px; height: 25px; margin-top: 3px"
+                    class="btn btn-primary material-symbols-outlined position-relative mx-1">
+              <i style="top: 50%; left: 50%; transform: translate(-50%, -50%);"
+                 class="m-auto position-absolute bi bi-check"></i>
+            </button>
+            <button (click)="cancelEditing()" style="width: 10px; height: 25px; margin-top: 3px"
+                    class="btn btn-primary mx-1 material-symbols-outlined position-relative">
+              <i style="top: 50%; left: 50%; transform: translate(-50%, -50%);"
+                 class="m-auto bi bi-x position-absolute">
+              </i>
+            </button>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
 </div>
+
+<div class="bg-light m-auto upload-container">
+  <div class="gap-2">
+    <h1 class="">Upload</h1>
+
+    <label for="formFileLg" class="form-label w-100">Please choose one or more video files to upload</label>
+    <input #files (change)="filesSelected()" class="form-control form-control-lg" id="formFileLg" type="file" multiple/>
+
+    <div class="form-group mt-3">
+      <label for="videoName" style="margin-bottom: 3px">Video name</label>
+      <input #nameInput type="text" class="form-control form-control-lg" id="videoName" disabled
+             placeholder="Video name">
+    </div>
+    <input #uploadBtn (click)="uploadFunc()" type="button" value="Upload" class="btn btn-primary mt-3" disabled>
+    <h1 #uploadedMsg style="display: none;">Done!</h1>
+  </div>
+
+  <div class="labels-section">
+    <h2>Labels</h2>
+    <div class="label-container">
+      <div class="labels d-flex mb-4">
+        <div *ngFor="let label of labels" class="btn btn-secondary d-flex m-2 label position-relative">
+          <div>{{label}}</div>
+          <div #labelClose class="material-symbols-outlined" (click)="removeLabels(label)" style="margin-left: 20px;">
+            close
+          </div>
+        </div>
+        <button (click)="newLabel()" #newBtn class="btn btn-secondary m-2 label position-relative">
+          <div>+ Add New</div>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

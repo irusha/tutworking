@@ -93,7 +93,6 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
     let newBtnText = this.newBtnText?.nativeElement
     if (this.isEditingCancelled) {
       this.isEditingCancelled = false
-        console.log("Label switch")
     }
     else {
       if (!this.isNewLabelAlreadyClicked) {
