@@ -29,12 +29,19 @@ export class UploadComponent implements AfterViewInit, OnInit {
 
   uploadFunc() {
     let files = this.files?.nativeElement.files
+    let nameElement = this.nameInput?.nativeElement
     let formData: FormData = new FormData()
     for (let i = 0; i < files.length; i++) {
       let currentFile = files[i]
       formData.append('file', currentFile)
     }
-    console.log(formData)
+
+    this.labels.forEach(label => formData.append('labels', label))
+
+    if (nameElement.value != "") {
+      formData.append('name', nameElement.value)
+    }
+
     this.apiService.postData(serverAddress + '/upload/', formData).subscribe(any => this.uploadData = any)
   }
 

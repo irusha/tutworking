@@ -3,9 +3,12 @@
   border-radius: 10px;
   position: absolute;
   top: 50%;
-  display: flex;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+}
+
+.label-selector-body {
+  display: flex;
 }
 
 .labels-modal {
@@ -57,13 +60,17 @@
 
 @media (max-width: 500px) {
   .upload-container {
-    display: block;
     width: 90vw;
   }
 
   .labels-section {
     margin-left: 0;
+    width: 100%;
     margin-top: 20px;
+  }
+
+  .label-selector-body {
+    flex-direction: column;
   }
 
 }
