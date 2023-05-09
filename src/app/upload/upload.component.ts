@@ -11,6 +11,7 @@ import {serverAddress} from "../../environments/environment";
 
 export class UploadComponent implements AfterViewInit {
   @ViewChild('files') files: ElementRef | undefined;
+  @ViewChild('uploadedMsg') uploadedMsg: ElementRef | undefined;
 
   uploadFunc() {
     let files = this.files?.nativeElement.files
@@ -20,8 +21,15 @@ export class UploadComponent implements AfterViewInit {
       formData.append('file', currentFile)
     }
     console.log(formData)
-    this.apiService.postData(serverAddress + '/upload/', formData).subscribe(any => console.log(any))
+    this.apiService.postData(serverAddress + '/upload/', formData).subscribe(any => this.uploadData = any)
   }
+
+  set uploadData(data: any) {
+    console.log(data)
+    let uploadedMsg = this.uploadedMsg?.nativeElement
+    uploadedMsg.style.display = 'block'
+  }
+
   constructor(private apiService: DataGrabberService) {
   }
 
