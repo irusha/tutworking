@@ -32,6 +32,12 @@
   </div>
 </div>
 
+<div class="labels-modal" [ngStyle]="{display: uploadCompletedVisibility ? 'block' : 'none'}">
+  <div class="options-container bg-light text-dark mb-2 label-list">
+    <h1>Upload</h1>
+  </div>
+</div>
+
 <div class="bg-light m-auto upload-container">
   <div class="label-selector-body">
     <div class="gap-2">
@@ -46,7 +52,6 @@
         <input #nameInput type="text" class="form-control form-control-lg" id="videoName" disabled
                placeholder="Video Name">
       </div>
-      <h1 #uploadedMsg style="display: none;">Done!</h1>
     </div>
 
     <div class="labels-section">
@@ -59,7 +64,7 @@
               close
             </div>
           </div>
-          <button (click)="newLabel()" #newBtn class="btn btn-secondary m-2 label position-relative">
+          <button #newLabelBtn (click)="newLabel()" #newBtn class="btn btn-secondary m-2 label position-relative">
             <div>+ Add New</div>
           </button>
         </div>
@@ -67,6 +72,15 @@
 
     </div>
   </div>
-  <input #uploadBtn (click)="uploadFunc()" type="button" value="Upload" class="btn btn-primary mt-3" disabled>
+  <div class="upload-footer position-relative">
+    <input #uploadBtn (click)="uploadFunc()" type="button" value="Upload" class="btn btn-primary mt-3" disabled>
+    <div #loadingIndicator class="d-flex" style="visibility: hidden">
+      <h3 class=" mt-3 mx-3">Uploading...</h3>
+      <div class="spinner-grow mt-3" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+
+  </div>
 </div>
 

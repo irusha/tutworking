@@ -71,6 +71,11 @@
   width: max-content;
 }
 
+.upload-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .labels {
   flex-wrap: wrap;
   max-height: 65vh;
