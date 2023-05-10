@@ -62,6 +62,8 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
     this.isEditingCancelled = true
     this.isNewLabelAlreadyClicked = false
     console.log("ok")
+    let inputElement = this.inputText?.nativeElement
+    inputElement.value = ''
   }
 
   doneEditing() {
@@ -90,6 +92,7 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
 
   newLabelSwitch() {
     let labelInput = this.labelInput?.nativeElement
+    let inputElement = this.inputText?.nativeElement
     let newBtnText = this.newBtnText?.nativeElement
     if (this.isEditingCancelled) {
       this.isEditingCancelled = false
@@ -98,6 +101,7 @@ export class LabelsEditorComponent implements OnInit, AfterViewInit {
       if (!this.isNewLabelAlreadyClicked) {
         this.isNewLabelAlreadyClicked = true
         labelInput.style.display = 'flex'
+        inputElement.focus()
         newBtnText.style.display = 'none'
       }
     }

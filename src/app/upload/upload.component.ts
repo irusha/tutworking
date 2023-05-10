@@ -61,6 +61,7 @@ export class UploadComponent implements AfterViewInit, OnInit {
   newLabelSwitch() {
     let labelInput = this.labelInput?.nativeElement
     let newBtnText = this.newBtnText?.nativeElement
+    let inputElement = this.inputText?.nativeElement
     if (this.isEditingCancelled) {
       this.isEditingCancelled = false
     }
@@ -68,6 +69,7 @@ export class UploadComponent implements AfterViewInit, OnInit {
       if (!this.isNewLabelAlreadyClicked) {
         this.isNewLabelAlreadyClicked = true
         labelInput.style.display = 'flex'
+        inputElement.focus()
         newBtnText.style.display = 'none'
       }
     }
@@ -96,6 +98,8 @@ export class UploadComponent implements AfterViewInit, OnInit {
     newBtnText.style.display = 'flex'
     this.isEditingCancelled = true
     this.isNewLabelAlreadyClicked = false
+    let inputElement = this.inputText?.nativeElement
+    inputElement.value = ''
   }
 
   addLabelToArray(label: any) {
