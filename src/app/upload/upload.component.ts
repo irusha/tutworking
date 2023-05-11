@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewChildren} from "@angular/core";
 import {DataGrabberService} from "../data-grabber.service";
-import {serverAddress} from "../../environments/environment";
+import {angularAddress, serverAddress} from "../../environments/environment";
 
 @Component({
   selector: 'app-upload',
@@ -27,7 +27,13 @@ export class UploadComponent implements AfterViewInit, OnInit {
   labelObj: any;
   labels: string[] = [];
   failedFiles: any = {}
+  uploadedVideos: any = {}
   uploadCompletedVisibility = false
+
+  failedFilesKeys: string[] = []
+  uploadedVideosKeys: string[] = []
+
+  address: string | undefined;
 
   isEmpty(obj: any) {
     return Object.keys(obj).length === 0;
@@ -71,6 +77,7 @@ export class UploadComponent implements AfterViewInit, OnInit {
     let newLabelBtn = this.newLabelBtn?.nativeElement
 
     this.failedFiles = data.failedFiles
+    this.uploadedVideos = data.succeeded
     console.log(data)
     uploadBtn.disabled = false
     files.disabled = false
@@ -78,6 +85,9 @@ export class UploadComponent implements AfterViewInit, OnInit {
     files.value = null
     this.labels = []
     loadingIndicator.style.visibility = 'hidden'
+    this.failedFilesKeys = Object.keys(this.failedFiles)
+    this.uploadedVideosKeys = Object.keys(this.uploadedVideos)
+    this.uploadCompletedVisibility = true
     newLabelBtn.disabled = false
   }
 
@@ -140,7 +150,7 @@ export class UploadComponent implements AfterViewInit, OnInit {
   }
 
   closeUploadComplete() {
-
+    this.uploadCompletedVisibility = false
   }
 
   closeLabelSelector() {
@@ -166,6 +176,7 @@ export class UploadComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
+    this.address = angularAddress
     let objData: any;
     this.apiService.getData(serverAddress + "/labels/").subscribe(res => {
       objData = res

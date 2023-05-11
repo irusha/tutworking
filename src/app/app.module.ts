@@ -11,6 +11,8 @@ import { VideoViewComponent } from './video-view/video-view.component';
 import { HomeComponent } from './home/home.component';
 import { LabelsEditorComponent } from './labels-editor/labels-editor.component';
 import {UploadComponent} from "./upload/upload.component";
+import { SearchComponent } from './search/search.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {UploadComponent} from "./upload/upload.component";
     VideoViewComponent,
     HomeComponent,
     LabelsEditorComponent,
-    UploadComponent
+    UploadComponent,
+    SearchComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,

@@ -33,12 +33,49 @@
 </div>
 
 <div class="labels-modal" [ngStyle]="{display: uploadCompletedVisibility ? 'block' : 'none'}">
-  <div class="options-container bg-light text-dark mb-2 label-list">
+  <div [ngStyle]="{width: '90vw'}" class="options-container bg-light text-dark mb-2 label-list">
     <div class="mx-2 d-flex justify-content-between">
-      <h2>Upload finished {{isEmpty(failedFiles) ? "" : "with errors"}}</h2>
+      <h1>Upload finished {{isEmpty(failedFiles) ? "" : "with errors"}}</h1>
 
       <div (click)="closeUploadComplete()" class="material-symbols-outlined" style="cursor: pointer">close</div>
     </div>
+    <h2 class="mx-2">Uploaded files</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Video name</th>
+        <th scope="col">URL</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let key of uploadedVideosKeys; let i = index">
+        <tr>
+          <th scope="row">{{i + 1}}</th>
+          <td>{{uploadedVideos[key]}}</td>
+          <td><a href="{{address + '/video?id=' + key}}">{{address + '/video?id=' + key}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div [ngStyle]="{display: isEmpty(failedFiles) ? 'none' : 'block'}">
+      <h2 class="mx-2">Failed files</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Video name</th>
+          <th scope="col">Error</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let key of failedFilesKeys; let i = index">
+        <tr>
+          <th scope="row">{{i + 1}}</th>
+          <td>{{key}}</td>
+          <td>{{failedFiles[key]}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
 
