@@ -2,7 +2,7 @@
   <div class="options-container bg-light text-dark mb-2 label-list">
     <div class="mx-2 d-flex justify-content-between">
       <h2>Add a new label</h2>
-      <div (click)="close()" class="material-symbols-outlined" style="cursor: pointer">close</div>
+      <div (click)="closeLabelSelector()" class="material-symbols-outlined" style="cursor: pointer">close</div>
     </div>
 
     <div class="list-group">
@@ -34,7 +34,11 @@
 
 <div class="labels-modal" [ngStyle]="{display: uploadCompletedVisibility ? 'block' : 'none'}">
   <div class="options-container bg-light text-dark mb-2 label-list">
-    <h1>Upload</h1>
+    <div class="mx-2 d-flex justify-content-between">
+      <h2>Upload finished {{isEmpty(failedFiles) ? "" : "with errors"}}</h2>
+
+      <div (click)="closeUploadComplete()" class="material-symbols-outlined" style="cursor: pointer">close</div>
+    </div>
   </div>
 </div>
 

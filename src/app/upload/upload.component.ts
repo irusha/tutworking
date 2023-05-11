@@ -26,8 +26,12 @@ export class UploadComponent implements AfterViewInit, OnInit {
   isEditingCancelled = false
   labelObj: any;
   labels: string[] = [];
-  failedFiles: any[] = []
+  failedFiles: any = {}
   uploadCompletedVisibility = false
+
+  isEmpty(obj: any) {
+    return Object.keys(obj).length === 0;
+  }
 
   uploadFunc() {
     let files = this.files?.nativeElement
@@ -67,7 +71,7 @@ export class UploadComponent implements AfterViewInit, OnInit {
     let newLabelBtn = this.newLabelBtn?.nativeElement
 
     this.failedFiles = data.failedFiles
-    console.log(this.failedFiles)
+    console.log(data)
     uploadBtn.disabled = false
     files.disabled = false
     nameElement.value = ''
@@ -135,7 +139,11 @@ export class UploadComponent implements AfterViewInit, OnInit {
 
   }
 
-  close() {
+  closeUploadComplete() {
+
+  }
+
+  closeLabelSelector() {
     this.isNewLabelAlreadyClicked = false
     let modal = this.modal?.nativeElement
     modal.style.display = 'none'
