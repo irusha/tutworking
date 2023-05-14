@@ -6,3 +6,13 @@
   background-color: transparent;
   padding: 1px;
 }
+
+.top-space {
+  height: 100px;
+}
+
+@media (max-width: 520px) {
+  .top-space {
+    height: 120px;
+  }
+}

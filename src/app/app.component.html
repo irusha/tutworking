@@ -1,9 +1,10 @@
-<nav style="z-index: 10" class="navbar navbar-expand-sm px-2 justify-content-between navbar-dark bg-dark w-100">
+<nav style="z-index: 10" class="navbar navbar-expand-sm px-2 justify-content-between navbar-dark bg-dark w-100 position-fixed top-0">
   <div class="flex-row d-flex mx-2 justify-content-between">
     <a href="{{address}}" class="text-decoration-none text-white mx-2 my-1"><h2 class="mb-0 navbar-brand">HomeHub</h2></a>
     <a href="/upload" class="text-decoration-none text-white mx-2 mt-3">Upload</a>
   </div>
   <app-search></app-search>
 </nav>
+<div class="top-space"></div>
 <!--<app-video-list [apiData]="secondDataSet"></app-video-list>-->
 <router-outlet></router-outlet>
