@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import {DataGrabberService} from "../data-grabber.service";
 import {angularAddress, serverAddress} from "../../environments/environment";
 import {ActivatedRoute} from "@angular/router";
+import {pagesArrayCreator} from "../common-methods";
 
 @Component({
   selector: 'app-home',
@@ -40,14 +41,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.secondDataSet = secondDataSetObj.data
       this.maxPages = secondDataSetObj.pages
       if (secondDataSetObj.pages > 7) {
-        this.pages.push(...this.pagesArrayCreator(this.pageNumber, secondDataSetObj.pages))
+        this.pages.push(...pagesArrayCreator(this.pageNumber, secondDataSetObj.pages))
       } else {
         for (let i = 1; i <= secondDataSetObj.pages; i++) {
           this.pages?.push(i)
         }
       }
-
-      console.log(this.pages)
     })
   }
 
@@ -62,33 +61,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
       let recommTitle = this.recommendationTitle?.nativeElement
       recommTitle.style.display = 'none'
     }
-  }
-
-  pagesArrayCreator(page: number, maxPages: number) {
-    let pages = []
-    if (page == maxPages || page == maxPages - 1) {
-      for (let i = page - 4; i <= maxPages; i++) {
-        if (i > 0) {
-          pages.push(i)
-        }
-      }
-    }
-
-    else if (page == 1 || page == 2) {
-      for (let i = 1; i <= 5; i++) {
-        if (i <= maxPages) {
-          pages.push(i)
-        }
-      }
-    }
-
-    else {
-      for (let i = page - 2; i <= page + 2; i++) {
-        if (i <= maxPages) {
-          pages.push(i)
-        }
-      }
-    }
-    return pages
   }
 }
