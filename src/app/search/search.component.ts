@@ -26,7 +26,6 @@ export class SearchComponent {
   constructor(private apiService: DataGrabberService) {  }
 
   showFiltersFlyOut() {
-    console.log("Filter shown")
     let filtersFlyOut = this.filtersFlyOut?.nativeElement
     filtersFlyOut.style.display = 'block'
   }

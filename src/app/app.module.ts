@@ -24,7 +24,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
     LabelsEditorComponent,
     UploadComponent,
     SearchComponent,
-    SearchPageComponent
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,
