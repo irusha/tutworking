@@ -13,6 +13,8 @@ import { LabelsEditorComponent } from './labels-editor/labels-editor.component';
 import {UploadComponent} from "./upload/upload.component";
 import { SearchComponent } from './search/search.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { ManageComponent } from './manage/manage.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
     UploadComponent,
     SearchComponent,
     SearchPageComponent,
+    PaginationComponent,
+    ManageComponent,
   ],
   imports: [
     BrowserModule,

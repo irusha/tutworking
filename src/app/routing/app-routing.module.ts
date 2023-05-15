@@ -4,6 +4,7 @@ import {VideoViewComponent} from "../video-view/video-view.component";
 import {HomeComponent} from "../home/home.component";
 import {UploadComponent} from "../upload/upload.component";
 import {SearchPageComponent} from "../search-page/search-page.component";
+import {ManageComponent} from "../manage/manage.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,8 @@ const routes: Routes = [
     path: 'upload', component: UploadComponent
   }, {
     path: 'search', component: SearchPageComponent
+  }, {
+    path: 'manage', component: ManageComponent
   }
 ];
 
