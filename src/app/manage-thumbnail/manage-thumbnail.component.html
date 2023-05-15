@@ -1,0 +1,14 @@
+<div class="d-flex main my-3 position-relative bg-dark rounded-3 p-0" style="overflow: hidden">
+  <div class="thumb">
+    <img #thumbImg src="{{'http://' + videoThumbObj.thumbnail}}" alt="" id="video-thumb" class="thumb-img">
+  </div>
+  <div class="description flex-column d-flex">
+    <p>{{videoThumbObj.title}}</p>
+    <div class="d-flex justify-content-between">
+      <a style="text-decoration: none" class="btn btn-link" href="{{address + '/video?id=' + videoThumbObj.id}}" target="_blank">Open video</a>
+      <button class="bg-transparent border-0 btn btn-outline-primary text-light">
+        <i class="bi bi-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>

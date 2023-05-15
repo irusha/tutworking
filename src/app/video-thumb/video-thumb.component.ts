@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {angularAddress, serverAddress} from "../../environments/environment";
 
 @Component({
   selector: 'app-video-thumb',
@@ -15,7 +16,7 @@ export class VideoThumbComponent implements AfterViewInit, OnInit {
   @Input() prevVideoElements: any;
   @Output() itemEvent = new EventEmitter<any>;
   time: string | undefined;
-  address: string | undefined;
+  address: string = angularAddress;
 
   setPreviousItem(values: any) {
     this.itemEvent.emit(values);
@@ -23,7 +24,6 @@ export class VideoThumbComponent implements AfterViewInit, OnInit {
 
   ngOnInit():void {
     this.secondsToFormatted()
-    this.address = "http://" + window.location.host
   }
 
   ngAfterViewInit(): void {

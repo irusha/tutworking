@@ -1,0 +1,12 @@
+@media (min-width: 750px) {
+  .thumbs-list app-manage-thumbnail {
+    display: block;
+    width: 40%;
+  }
+  .thumbs-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

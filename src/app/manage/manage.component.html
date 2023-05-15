@@ -1,3 +1,9 @@
 <div class="p-4">
   <h1 class="text-light">Manage your videos here</h1>
+  <div class="thumbs-list">
+    <app-manage-thumbnail *ngFor="let video of videos" [videoThumbObj]="video"></app-manage-thumbnail>
+  </div>
+
 </div>
+<app-pagination [pages]="pages" [pageNumber]="pageNumber" [urlFormat]="urlFormat"
+                [maxPages]="maxPages"></app-pagination>

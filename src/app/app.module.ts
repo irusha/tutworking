@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ManageComponent } from './manage/manage.component';
+import { ManageThumbnailComponent } from './manage-thumbnail/manage-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ManageComponent } from './manage/manage.component';
     SearchPageComponent,
     PaginationComponent,
     ManageComponent,
+    ManageThumbnailComponent,
   ],
   imports: [
     BrowserModule,
