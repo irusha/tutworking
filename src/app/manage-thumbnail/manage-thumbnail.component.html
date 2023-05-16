@@ -6,9 +6,22 @@
     <p>{{videoThumbObj.title}}</p>
     <div class="d-flex justify-content-between">
       <a style="text-decoration: none" class="btn btn-link" href="{{address + '/video?id=' + videoThumbObj.id}}" target="_blank">Open video</a>
-      <button class="bg-transparent border-0 btn btn-outline-primary text-light">
+      <button #delBut (click)="getRequestId(videoThumbObj.id)" class="bg-transparent border-0 btn btn-outline-primary text-light">
         <i class="bi bi-trash"></i>
       </button>
     </div>
   </div>
 </div>
+
+<div #deleteConf class="delete-conf text-light" style="display: none">
+  <div class="bg-dark message-container">
+    <h3>Are you sure to delete this video?</h3>
+    <div class="d-flex px-3 justify-content-around">
+      <button class="btn btn-secondary" (click)="deleteVideo()">Yes</button>
+      <button class="btn btn-primary" (click)="closeDeleteDB()">No</button>
+    </div>
+  </div>
+
+</div>
+
+

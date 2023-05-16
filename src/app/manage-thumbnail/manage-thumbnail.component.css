@@ -12,6 +12,27 @@
   width: 30%;
 }
 
+.message-container {
+  max-height: 90%;
+  overflow: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.delete-conf {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(17, 17, 17, 0.55);
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .description {
   padding: 10px;
   justify-content: space-around;
@@ -23,7 +44,6 @@
   overflow: hidden;
   width: 95%;
   height: 1.2em;
-  white-space: nowrap;
   color: #f1f1f1;
 }
 
@@ -31,6 +51,7 @@
   .thumb img {
     height: 20vw;
   }
+
 }
 
 @media (min-width: 750px) {
@@ -45,6 +66,7 @@
   }
 
   .description p {
+    padding: 0 10px;
     font-size: large;
     line-height: 1.5em;
     height: 3em;
@@ -57,4 +79,5 @@
   .thumb img {
     height: 16vw;
   }
+
 }
