@@ -8,11 +8,12 @@
 
 .vid-desc {
   width: 100vw;
+  overflow: hidden;
 }
 
 .vid-desc h3 {
   max-height: 14vw;
-  width: calc(100vw - 2em);
+  width: 90%;
   overflow: hidden;
   word-wrap: break-word;
 }
@@ -97,7 +98,6 @@
   }
 
   .vid-desc h3 {
-    width: 350px;
     flex-basis: 350px;
   }
 
