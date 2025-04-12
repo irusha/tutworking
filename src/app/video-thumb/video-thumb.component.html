@@ -1,7 +1,7 @@
 <a href="{{address + '/video?id=' + videoThumbObj.id}}" #thumbnail class="thumbnail text-decoration-none">
   <div class="thumb-media">
     <img #thumbImg src="{{'http://' + videoThumbObj.thumbnail}}" alt="" id="video-thumb" class="thumb-img">
-    <video preload="metadata" #thumbPrev class="thumb-video" loop src="{{'http://' + videoThumbObj.preview}}"
+    <video preload="metadata" playsinline #thumbPrev class="thumb-video" loop src="{{'http://' + videoThumbObj.preview}}"
            id="video-prev" muted style="display: none"></video>
     <div class="time"><p style="color: white">{{time}}</p></div>
   </div>
